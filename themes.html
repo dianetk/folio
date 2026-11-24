@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Тест: темы + фильтры</title>
+    <style>
+      /* --- CSS Переменные и темы --- */
+      :root {
+        --bg-color: #ffffff;
+        --text-color: #111111;
+        --card-bg: #f5f7fa;
+        --border-color: #e0e4e9;
+        --primary-color: #007bff;
+        --primary-text: #ffffff;
+      }
+
+      [data-theme="dark"] {
+        --bg-color: #121212;
+        --text-color: #e0e3e8;
+        --card-bg: #1e1e1e;
+        --border-color: #333333;
+        --primary-color: #4f46e5;
+        --primary-text: #ffffff;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial,
+          sans-serif;
+        margin: 0;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      /* Плавные переходы при смене темы */
+      body,
+      .card,
+      .tag,
+      .tag.active {
+        transition:
+          background-color 0.3s,
+          color 0.3s,
+          border-color 0.3s;
+      }
+
+      h1 {
+        margin-bottom: 24px;
+      }
+
+      /* --- Фильтры (теги) --- */
+      .filters-container {
+        margin-bottom: 24px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 16px;
+        border: 1px solid var(--border-color);
+        background: transparent;
+        color: var(--text-color);
+        cursor: pointer;
+        border-radius: 6px;
+        font-size: 14px;
+        user-select: none;
+      }
+
+      .tag.active {
+        background-color: var(--primary-color);
+        color: var(--primary-text);
+        border-color: var(--primary-color);
+      }
+
+      /* Кнопка темы */
+      #theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 1px solid var(--border-color);
+        background: var(--card-bg);
+        color: var(--text-color);
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+
+      /* --- Карточки (cases) --- */
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 16px;
+      }
+
+      .card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        padding: 16px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      .card h3 {
+        margin: 0 0 8px 0;
+      }
+      .card .tags-list {
+        font-size: 12px;
+        color: #888;
+        margin-top: 8px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Кнопка переключения темы -->
+    <button id="theme-toggle" aria-label="Переключить тему">🌙</button>
+
+    <!-- Фильтры -->
+    <div class="filters-container">
+      <button class="tag active" data-tag="all">Все</button>
+      <button class="tag" data-tag="web">Веб</button>
+      <button class="tag" data-tag="design">Дизайн</button>
+      <button class="tag" data-tag="code">Код</button>
+    </div>
+
+    <!-- Карточки с несколькими тегами (через пробел) -->
+    <div class="cards-grid">
+      <div class="card" data-tags="web design">
+        <h3>Блок 1</h3>
+        <p>Подходит под «веб» и «дизайн».</p>
+        <span class="tags-list">Теги: web, design</span>
+      </div>
+      <div class="card" data-tags="code">
+        <h3>Блок 2</h3>
+        <p>Только «код».</p>
+        <span class="tags-list">Теги: code</span>
+      </div>
+      <div class="card" data-tags="design code">
+        <h3>Блок 3</h3>
+        <p>И «дизайн», и «код».</p>
+        <span class="tags-list">Теги: design, code</span>
+      </div>
+      <div class="card" data-tags="web">
+        <h3>Блок 4</h3>
+        <p>Только «веб».</p>
+        <span class="tags-list">Теги: web</span>
+      </div>
+      <div class="card" data-tags="web code">
+        <h3>Блок 5</h3>
+        <p>«Веб» и «код» одновременно.</p>
+        <span class="tags-list">Теги: web, code</span>
+      </div>
+    </div>
+
+    <script>
+      // --- Логика темы ---
+      const toggleBtn = document.getElementById("theme-toggle");
+      const html = document.documentElement;
+
+      function setTheme(theme) {
+        if (theme === "dark") {
+          html.setAttribute("data-theme", "dark");
+          localStorage.setItem("user-theme", "dark");
+        } else {
+          html.removeAttribute("data-theme");
+          localStorage.setItem("user-theme", "light");
+        }
+      }
+
+      const saved = localStorage.getItem("user-theme");
+      if (saved) {
+        setTheme(saved);
+      } else {
+        const systemPrefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        setTheme(systemPrefersDark ? "dark" : "light");
+      }
+
+      toggleBtn.addEventListener("click", () => {
+        const current =
+          html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        setTheme(current);
+      });
+
+      // Меняем иконку кнопки при смене темы (опционально)
+      toggleBtn.addEventListener("click", () => {
+        toggleBtn.textContent =
+          html.getAttribute("data-theme") === "dark" ? "☀️" : "🌙";
+      });
+
+      // --- Логика фильтров (с хэшем и несколькими тегами) ---
+      const tags = document.querySelectorAll(".tag");
+      const cards = document.querySelectorAll(".card");
+
+      function applyFilter(selectedTag) {
+        // Обновляем кнопку
+        tags.forEach((t) => t.classList.remove("active"));
+        const activeBtn = Array.from(tags).find(
+          (t) => t.dataset.tag === selectedTag,
+        );
+        if (activeBtn) activeBtn.classList.add("active");
+
+        // Фильтруем карточки
+        cards.forEach((c) => {
+          if (selectedTag === "all") {
+            c.style.display = "block";
+            return;
+          }
+
+          const cardTags = c.dataset.tags?.toLowerCase().split(/\s+/) || [];
+          const selectedLower = selectedTag.toLowerCase();
+
+          c.style.display = cardTags.includes(selectedLower) ? "block" : "none";
+        });
+      }
+
+      function getTagFromHash() {
+        const hash = window.location.hash.substring(1);
+        const allowedTags = Array.from(tags).map((t) => t.dataset.tag);
+        return allowedTags.includes(hash) ? hash : "all";
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        applyFilter(getTagFromHash());
+      });
+
+      tags.forEach((tag) => {
+        tag.addEventListener("click", () => {
+          window.location.hash = tag.dataset.tag;
+        });
+      });
+
+      window.addEventListener("hashchange", () => {
+        applyFilter(getTagFromHash());
+      });
+    </script>
+  </body>
+</html>

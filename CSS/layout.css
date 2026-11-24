@@ -232,3 +232,104 @@ h1:hover {
   right: 0px;
   bottom: 0px;
 }
+
+/* video in square */
+.square-cover {
+  position: relative;
+  width: 100%; /* Пример: фиксированный размер квадрата */
+  height: 100%; /* Пример: фиксированный размер квадрата */
+  overflow: hidden; /* Чтобы скрыть видео, выходящее за границы */
+}
+
+.square-cover video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Заполняет контейнер, обрезая лишнее */
+}
+
+/* sortirovka */
+
+.filter-tags {
+  /* margin: 20px; */
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 12px;
+}
+
+.tag {
+  padding: 4px 12px;
+  border-radius: 16px;
+  border: 1px solid #ddd;
+  background: #000000;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 1s;
+}
+
+.tag.active {
+  background: #ffffff;
+  color: #000000;
+}
+.orn:hover {
+  background: #ff7700;
+  transition: 0.1s;
+}
+
+.pur:hover {
+  background: #6200ff;
+  transition: 0.1s;
+}
+.pur.active:hover {
+  color: white;
+}
+
+.yel:hover {
+  background: #ffe600;
+  color: #000000;
+  transition: 0.1s;
+}
+
+.blu:hover {
+  background: #0077ff;
+  color: #ffffff;
+  transition: 0.1s;
+}
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.case {
+  background-color: #000000;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.case img {
+  width: 100%;
+  /* border-radius: 8px; */
+}
+
+/* text */
+
+h3 {
+  font-weight: 700;
+}
+
+p {
+  color: #bcbcbc;
+}
+
+.in {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logos {
+  width: 100px;
+}

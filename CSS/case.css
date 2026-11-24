@@ -100,6 +100,9 @@ a {
 .case-media {
   width: 75%;
   padding-bottom: 16px;
+  /* display: flex;
+  flex-direction: column;
+  gap: 8px; */
 }
 
 .case-img {
@@ -228,4 +231,69 @@ a {
 
   position: relative;
   overflow: hidden;
+}
+
+.inline-img {
+  max-width: 100%;
+
+  display: flex;
+  /* flex-direction: row; */
+  gap: 8px;
+}
+
+.motion-vid {
+  /* flex-grow: 1; */
+  flex: 1 1 0;
+  border-radius: 8px;
+
+  max-width: 100%;
+}
+
+/* для картинок */
+.row {
+  display: flex;
+  width: 100%;
+  gap: 8px; /* можно убрать, если картинки вплотную */
+}
+
+.row img {
+  flex: 0 1 0; /* grow выставит JS по пропорции каждой картинки */
+  min-width: 0;
+  height: auto; /* вот тут hug: высота считается от ширины */
+  display: block;
+  object-fit: cover;
+}
+
+/* для видео */
+.video-container {
+  display: flex;
+  width: 100%;
+  gap: 8px; /* можно убрать, если видео вплотную */
+  padding-bottom: 8px;
+}
+
+.video-container video {
+  flex: 0 1 0; /* grow выставит JS по пропорции каждого видео */
+  min-width: 0;
+  height: auto; /* hug по высоте, как у картинок */
+  display: block;
+  object-fit: cover; /* страховка от расхождения в пиксель */
+}
+
+/* имг и видео вместе тест */
+.media-container {
+  display: flex;
+  width: 100%;
+  gap: 8px; /* можно убрать, если элементы вплотную */
+  padding-bottom: 8px;
+}
+
+.media-container img,
+.media-container video {
+  flex: 0 1 0; /* grow выставит JS по пропорции каждого элемента */
+  min-width: 0;
+  height: auto; /* hug по высоте */
+  display: block;
+  object-fit: cover; /* страховка от расхождения в пиксель */
+  border-radius: 8px;
 }

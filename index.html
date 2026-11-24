@@ -11,36 +11,93 @@
   <body>
     <nav>
       <a href="dianet.html" class="name hover-a" id="changer">dia.net</a>
-      <a href="index.html" href="" class="hover-a">work</a>
+      <div class="in">
+        <a href="index.html" href="" class="hover-a">work</a>
+
+        <div class="filter-tags">
+          <button class="tag active" data-tag="all">All</button>
+          <button class="tag yel" data-tag="3d">3D</button>
+          <button class="tag pur" data-tag="motion">Motion</button>
+          <button class="tag orn" data-tag="identity">Identity</button>
+          <button class="tag blu" data-tag="web">Web</button>
+          <!-- <button class="tag" data-tag="ai">Ai</button> -->
+        </div>
+      </div>
     </nav>
 
     <div class="grid">
       <a
-        href="dianet.html"
-        class="cell filled textBlock"
-        data-title="...communication designer"
-        ><h1>
-          <!-- Hello! I'm communication (+motion, +web) designer and digital artist.
-          There're some selected works -->
-          hi! i'm...
-        </h1>
+        href="cases/motion-explorations.html"
+        class="cell filled case"
+        data-title="motion explorations"
+        data-tag="motion"
+      >
+        <div class="square-cover">
+          <video
+            autoplay
+            loop
+            muted
+            src="img/motion_3_2d_expl/morphey.mp4"
+          ></video>
+        </div>
       </a>
 
-      <a href="cases/7_out-cene.html" class="cell filled" data-title="out*cene">
+      <a
+        href="cases/xlsx.html"
+        class="cell filled case"
+        data-title="xlsx"
+        data-tag="motion"
+      >
+        <div class="square-cover">
+          <video
+            autoplay
+            loop
+            muted
+            src="img/motion_1/чето прикольновое 2.mp4"
+          ></video>
+        </div>
+      </a>
+
+      <a
+        href="cases/msk-vdk.html"
+        class="cell filled case"
+        data-title="Москва-Владивосток"
+        data-tag="identity web"
+      >
+        <img src="img/msk-vdk/msk-vdk-1.png" alt="" />
+      </a>
+
+      <a
+        href="cases/out-cene.html"
+        class="cell filled case"
+        data-title="out*cene"
+        data-tag="identity web"
+      >
         <img src="img/out/out_2.png" alt="" />
       </a>
+
       <a
-        href="cases/4_copyright24.html"
-        class="cell filled"
+        href="cases/copyright24.html"
+        class="cell filled case"
         data-title="выставка copyright24"
+        data-tag="web"
       >
         <img src="img/copyright24/copyright_2.jpg" alt="" />
       </a>
 
       <a
-        href="cases/3_touch.html"
-        class="cell filled"
+        href="cases/light-install.html"
+        class="cell filled case"
+        data-title="Обращаясь к свету"
+        data-tag="motion identity 3d"
+      >
+        <img src="img/turning-to-the-light/light_1.gif" alt="" />
+      </a>
+      <a
+        href="cases/touch.html"
+        class="cell filled case"
         data-title="touchdesigner showreel"
+        data-tag="motion"
       >
         <div class="video-wrapper">
           <div
@@ -77,57 +134,49 @@
         </div>
       </a>
 
-      <div class="cell empty"></div>
-      <div class="cell empty"></div>
-
       <a
-        href="cases/8_msk-vdk.html"
-        class="cell filled"
-        data-title="Москва-Владивосток"
+        href="cases/web-research-vid.html"
+        class="cell filled case"
+        data-title="Уход в лес: через web"
+        data-tag="motion web"
       >
-        <img src="img/msk-vdk/msk-vdk-1.png" alt="" />
+        <img src="img/web_vi/vi.gif" alt="" />
       </a>
 
       <a
-        href="cases/1_skatesho.html"
-        class="cell filled"
+        href="cases/skatesho.html"
+        class="cell filled case"
         data-title="skate'sho"
+        data-tag="identity 3d"
       >
-        <img src="img/skatesho/skate_2.jpg" alt="" />
+        <img src="img/skatesho/skate_4.jpg" alt="" />
       </a>
-
-      <div class="cell empty"></div>
-      <div class="cell empty"></div>
-
       <a
-        href="cases/2_light-install.html"
-        class="cell filled"
-        data-title="Обращаясь к свету"
+        href="cases/metalist.html"
+        class="cell filled case"
+        data-title="metalist"
+        data-tag="3d"
       >
-        <img src="img/turning-to-the-light/light_1.gif" alt="" />
-      </a>
-
-      <a href="cases/9_metalist.html" class="cell filled" data-title="metalist">
         <img src="img/metalist/meta_1.webp" alt="" />
       </a>
 
       <a
-        href="cases/5_web-book.html"
-        class="cell filled"
-        data-title="исследование web: Практики несерьезности"
-      >
-        <img src="img/web_vi/vi_1.jpg" alt="" />
+        href="dianet.html"
+        class="cell filled textBlock"
+        data-title="...communication designer"
+        ><h1>
+          <!-- Hello! I'm communication (+motion, +web) designer and digital artist.
+          There're some selected works -->
+          hi! i'm...
+        </h1>
       </a>
 
       <div class="cell empty"></div>
-      <a
-        href="cases/6_web-motion.html"
-        class="cell filled"
-        data-title="Уход в лес: через web
-"
-      >
-        <img src="img/web_vi/vi.gif" alt="" />
-      </a>
+      <div class="cell empty"></div>
+
+      <div class="cell empty"></div>
+      <div class="cell empty"></div>
+
       <div class="cell empty"></div>
     </div>
     <div class="typewriter"></div>
