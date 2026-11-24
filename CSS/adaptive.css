@@ -27,11 +27,26 @@
   nav {
     width: auto;
     display: flex;
+    flex-direction: column;
+    gap: 16px;
     padding: 16px;
-    flex-direction: row;
     justify-content: space-between;
   }
+  .in {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 
+  #workk {
+    font-size: 32px;
+  }
+
+  .filter-tags {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
   .about {
     width: auto;
     height: 100%;
